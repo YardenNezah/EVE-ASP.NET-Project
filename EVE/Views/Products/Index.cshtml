@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EVE.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+
+<div class="container" style="display:grid;text-align:center;">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="card col-4" style="width:18rem;">
+            <h1>Product ID: @item.ProductID</h1>
+            <p>Product Name: @item.ProductName</p>
+            <p>Product Type: @item.ProductType </p>
+            <p>Description: @item.Description</p>
+            <p>Stock: @item.Stock</p>
+            <p>Price: @item.Price</p>
+            <p>Image: @item.ImageSource</p>
+
+
+            <div style="display:flex;justify-content:space-between;">
+                <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
+                <a href="/Carts/Details/@item.ProductID">Description</a>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
