@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +9,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using EVE.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using EVE.Controllers;
+using EVE.Models;
+using Microsoft.AspNetCore.Session;
 
 namespace EVE
 {
@@ -28,7 +33,19 @@ namespace EVE
             services.AddControllersWithViews();
 
             services.AddDbContext<EVEContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("EVEContext")));
+                                options.UseSqlServer(Configuration.GetConnectionString("EVEContext")));
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+            });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Members/Login";
+                options.AccessDeniedPath = "/Members/AccessDenied";
+            });
+           
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,13 +61,26 @@ namespace EVE
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+            //app.UseSession();
 
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<EVEContext>();
+                context.Database.Migrate();
+            }
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<EVEContext>();
+                context.Database.EnsureCreated();
+            }
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

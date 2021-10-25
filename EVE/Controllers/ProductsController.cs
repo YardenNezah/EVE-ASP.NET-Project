@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EVE.Data;
 using EVE.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EVE.Controllers
 {
@@ -44,6 +45,7 @@ namespace EVE.Controllers
         }
 
         // GET: Products/Create
+        //[Authorize]
         public IActionResult Create()
         {
             return View();
