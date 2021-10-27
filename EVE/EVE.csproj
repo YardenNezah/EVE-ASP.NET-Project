@@ -16,6 +16,27 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="MySql.Data" Version="8.0.26" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.2" />
+    <PackageReference Include="ConnectionString" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Data\" />
+    <None Remove="MySql.Data" />
+    <None Remove="Pomelo.EntityFrameworkCore.MySql" />
+    <None Remove="ConnectionString" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\EVEContextModelSnapshot.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Migrations\EVEContextModelSnapshot.cs">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
