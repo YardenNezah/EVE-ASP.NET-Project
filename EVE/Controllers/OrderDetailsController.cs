@@ -10,22 +10,23 @@ using EVE.Models;
 
 namespace EVE.Controllers
 {
-    public class TransactionsController : Controller
+    public class OrderDetailsController : Controller
     {
         private readonly EVEContext _context;
 
-        public TransactionsController(EVEContext context)
+        public OrderDetailsController(EVEContext context)
         {
             _context = context;
         }
 
-        // GET: Transactions
+        // GET: OrderDetails
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Transaction.ToListAsync());
+            var eVEContext = _context.OrderDetail.Include(o => o.Member);
+            return View(await eVEContext.ToListAsync());
         }
 
-        // GET: Transactions/Details/5
+        // GET: OrderDetails/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,42 @@ namespace EVE.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transaction
-                .FirstOrDefaultAsync(m => m.TransactionID == id);
-            if (transaction == null)
+            var orderDetail = await _context.OrderDetail
+                .Include(o => o.Member)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (orderDetail == null)
             {
                 return NotFound();
             }
 
-            return View(transaction);
+            return View(orderDetail);
         }
 
-        // GET: Transactions/Create
+        // GET: OrderDetails/Create
         public IActionResult Create()
         {
+            ViewData["MemberId"] = new SelectList(_context.Member, "MemberID", "Address");
             return View();
         }
 
-        // POST: Transactions/Create
+        // POST: OrderDetails/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TransactionID,MemberID,ProductID,Quantity,ApprovalStatus")] Transaction transaction)
+        public async Task<IActionResult> Create([Bind("Id,MemberId,OrderDate,NumOfItem,Price,Status")] OrderDetail orderDetail)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(transaction);
+                _context.Add(orderDetail);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(transaction);
+            ViewData["MemberId"] = new SelectList(_context.Member, "MemberID", "Address", orderDetail.MemberId);
+            return View(orderDetail);
         }
 
-        // GET: Transactions/Edit/5
+        // GET: OrderDetails/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,23 @@ namespace EVE.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transaction.FindAsync(id);
-            if (transaction == null)
+            var orderDetail = await _context.OrderDetail.FindAsync(id);
+            if (orderDetail == null)
             {
                 return NotFound();
             }
-            return View(transaction);
+            ViewData["MemberId"] = new SelectList(_context.Member, "MemberID", "Address", orderDetail.MemberId);
+            return View(orderDetail);
         }
 
-        // POST: Transactions/Edit/5
+        // POST: OrderDetails/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TransactionID,MemberID,ProductID,Quantity,ApprovalStatus")] Transaction transaction)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,MemberId,OrderDate,NumOfItem,Price,Status")] OrderDetail orderDetail)
         {
-            if (id != transaction.TransactionID)
+            if (id != orderDetail.Id)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace EVE.Controllers
             {
                 try
                 {
-                    _context.Update(transaction);
+                    _context.Update(orderDetail);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TransactionExists(transaction.TransactionID))
+                    if (!OrderDetailExists(orderDetail.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +118,11 @@ namespace EVE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(transaction);
+            ViewData["MemberId"] = new SelectList(_context.Member, "MemberID", "Address", orderDetail.MemberId);
+            return View(orderDetail);
         }
 
-        // GET: Transactions/Delete/5
+        // GET: OrderDetails/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +130,31 @@ namespace EVE.Controllers
                 return NotFound();
             }
 
-            var transaction = await _context.Transaction
-                .FirstOrDefaultAsync(m => m.TransactionID == id);
-            if (transaction == null)
+            var orderDetail = await _context.OrderDetail
+                .Include(o => o.Member)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (orderDetail == null)
             {
                 return NotFound();
             }
 
-            return View(transaction);
+            return View(orderDetail);
         }
 
-        // POST: Transactions/Delete/5
+        // POST: OrderDetails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var transaction = await _context.Transaction.FindAsync(id);
-            _context.Transaction.Remove(transaction);
+            var orderDetail = await _context.OrderDetail.FindAsync(id);
+            _context.OrderDetail.Remove(orderDetail);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TransactionExists(int id)
+        private bool OrderDetailExists(int id)
         {
-            return _context.Transaction.Any(e => e.TransactionID == id);
+            return _context.OrderDetail.Any(e => e.Id == id);
         }
     }
 }

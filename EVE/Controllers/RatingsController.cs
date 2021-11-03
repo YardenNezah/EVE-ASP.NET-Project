@@ -22,7 +22,8 @@ namespace EVE.Controllers
         // GET: Ratings
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Rating.ToListAsync());
+            var eVEContext = _context.Rating.Include(r => r.Member).Include(r => r.Product);
+            return View(await eVEContext.ToListAsync());
         }
 
         // GET: Ratings/Details/5
@@ -34,7 +35,9 @@ namespace EVE.Controllers
             }
 
             var rating = await _context.Rating
-                .FirstOrDefaultAsync(m => m.RatingID == id);
+                .Include(r => r.Member)
+                .Include(r => r.Product)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (rating == null)
             {
                 return NotFound();
@@ -46,6 +49,8 @@ namespace EVE.Controllers
         // GET: Ratings/Create
         public IActionResult Create()
         {
+            ViewData["MemberId"] = new SelectList(_context.Member, "MemberID", "Address");
+            ViewData["ProductId"] = new SelectList(_context.Product, "ProductID", "ProductName");
             return View();
         }
 
@@ -54,7 +59,7 @@ namespace EVE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RatingID,MemberID,ProductID,Value")] Rating rating)
+        public async Task<IActionResult> Create([Bind("Id,MemberId,ProductId,Value")] Rating rating)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +67,8 @@ namespace EVE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["MemberId"] = new SelectList(_context.Member, "MemberID", "Address", rating.MemberId);
+            ViewData["ProductId"] = new SelectList(_context.Product, "ProductID", "ProductName", rating.ProductId);
             return View(rating);
         }
 
@@ -78,6 +85,8 @@ namespace EVE.Controllers
             {
                 return NotFound();
             }
+            ViewData["MemberId"] = new SelectList(_context.Member, "MemberID", "Address", rating.MemberId);
+            ViewData["ProductId"] = new SelectList(_context.Product, "ProductID", "ProductName", rating.ProductId);
             return View(rating);
         }
 
@@ -86,9 +95,9 @@ namespace EVE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RatingID,MemberID,ProductID,Value")] Rating rating)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,MemberId,ProductId,Value")] Rating rating)
         {
-            if (id != rating.RatingID)
+            if (id != rating.Id)
             {
                 return NotFound();
             }
@@ -102,7 +111,7 @@ namespace EVE.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RatingExists(rating.RatingID))
+                    if (!RatingExists(rating.Id))
                     {
                         return NotFound();
                     }
@@ -113,6 +122,8 @@ namespace EVE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["MemberId"] = new SelectList(_context.Member, "MemberID", "Address", rating.MemberId);
+            ViewData["ProductId"] = new SelectList(_context.Product, "ProductID", "ProductName", rating.ProductId);
             return View(rating);
         }
 
@@ -125,7 +136,9 @@ namespace EVE.Controllers
             }
 
             var rating = await _context.Rating
-                .FirstOrDefaultAsync(m => m.RatingID == id);
+                .Include(r => r.Member)
+                .Include(r => r.Product)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (rating == null)
             {
                 return NotFound();
@@ -147,7 +160,7 @@ namespace EVE.Controllers
 
         private bool RatingExists(int id)
         {
-            return _context.Rating.Any(e => e.RatingID == id);
+            return _context.Rating.Any(e => e.Id == id);
         }
     }
 }

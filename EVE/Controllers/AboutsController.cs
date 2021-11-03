@@ -10,22 +10,22 @@ using EVE.Models;
 
 namespace EVE.Controllers
 {
-    public class CommentsController : Controller
+    public class AboutsController : Controller
     {
         private readonly EVEContext _context;
 
-        public CommentsController(EVEContext context)
+        public AboutsController(EVEContext context)
         {
             _context = context;
         }
 
-        // GET: Comments
+        // GET: Abouts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Comment.ToListAsync());
+            return View(await _context.About.ToListAsync());
         }
 
-        // GET: Comments/Details/5
+        // GET: Abouts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace EVE.Controllers
                 return NotFound();
             }
 
-            var comment = await _context.Comment
-                .FirstOrDefaultAsync(m => m.CommentID == id);
-            if (comment == null)
+            var about = await _context.About
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (about == null)
             {
                 return NotFound();
             }
 
-            return View(comment);
+            return View(about);
         }
 
-        // GET: Comments/Create
+        // GET: Abouts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Comments/Create
+        // POST: Abouts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CommentID,Title,Message,Date")] Comment comment)
+        public async Task<IActionResult> Create([Bind("Id,Description,ImageSource")] About about)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(comment);
+                _context.Add(about);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(comment);
+            return View(about);
         }
 
-        // GET: Comments/Edit/5
+        // GET: Abouts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace EVE.Controllers
                 return NotFound();
             }
 
-            var comment = await _context.Comment.FindAsync(id);
-            if (comment == null)
+            var about = await _context.About.FindAsync(id);
+            if (about == null)
             {
                 return NotFound();
             }
-            return View(comment);
+            return View(about);
         }
 
-        // POST: Comments/Edit/5
+        // POST: Abouts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CommentID,Title,Message,Date")] Comment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,ImageSource")] About about)
         {
-            if (id != comment.CommentID)
+            if (id != about.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace EVE.Controllers
             {
                 try
                 {
-                    _context.Update(comment);
+                    _context.Update(about);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CommentExists(comment.CommentID))
+                    if (!AboutExists(about.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace EVE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(comment);
+            return View(about);
         }
 
-        // GET: Comments/Delete/5
+        // GET: Abouts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace EVE.Controllers
                 return NotFound();
             }
 
-            var comment = await _context.Comment
-                .FirstOrDefaultAsync(m => m.CommentID == id);
-            if (comment == null)
+            var about = await _context.About
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (about == null)
             {
                 return NotFound();
             }
 
-            return View(comment);
+            return View(about);
         }
 
-        // POST: Comments/Delete/5
+        // POST: Abouts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var comment = await _context.Comment.FindAsync(id);
-            _context.Comment.Remove(comment);
+            var about = await _context.About.FindAsync(id);
+            _context.About.Remove(about);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CommentExists(int id)
+        private bool AboutExists(int id)
         {
-            return _context.Comment.Any(e => e.CommentID == id);
+            return _context.About.Any(e => e.Id == id);
         }
     }
 }

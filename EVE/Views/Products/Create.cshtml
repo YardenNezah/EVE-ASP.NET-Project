@@ -18,13 +18,8 @@
                 <span asp-validation-for="ProductName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProductType" class="control-label"></label>
-                <select name="ProductType" id="ProductType">
-                    <option value="Dress">Dress</option>
-                    <option value="Activewear">Activewear</option>
-                    <option value="Jeans">Jeans</option>
-                    <option value="Tops">Tops</option>
-                </select>                <span asp-validation-for="ProductType" class="text-danger"></span>
+                <label asp-for="ProductTypeId" class="control-label"></label>
+                <select asp-for="ProductTypeId" class ="form-control" asp-items="ViewBag.ProductTypeId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
@@ -45,8 +40,16 @@
                 <label asp-for="ImageSource" class="control-label"></label>
                 <input asp-for="ImageSource" class="form-control" />
                 <span asp-validation-for="ImageSource" class="text-danger"></span>
-                    <input type="file" id="img" name="img" accept="image/*">
-                    <input type="submit">
+            </div>
+            <div class="form-group">
+                <label asp-for="FrontImage" class="control-label"></label>
+                <input asp-for="FrontImage" class="form-control" />
+                <span asp-validation-for="FrontImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackImage" class="control-label"></label>
+                <input asp-for="BackImage" class="form-control" />
+                <span asp-validation-for="BackImage" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

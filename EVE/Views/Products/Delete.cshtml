@@ -21,8 +21,8 @@
             @Html.DisplayNameFor(model => model.ProductType)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProductType)
-        </dd>
+            @Html.DisplayFor(model => model.ProductType.Name)
+        </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -46,6 +46,18 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ImageSource)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FrontImage)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FrontImage)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BackImage)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BackImage)
         </dd>
     </dl>
     

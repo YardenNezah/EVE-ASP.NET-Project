@@ -22,7 +22,8 @@ namespace EVE.Controllers
         // GET: Carts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cart.ToListAsync());
+            var eVEContext = _context.Cart.Include(c => c.Member);
+            return View(await eVEContext.ToListAsync());
         }
 
         // GET: Carts/Details/5
@@ -34,7 +35,8 @@ namespace EVE.Controllers
             }
 
             var cart = await _context.Cart
-                .FirstOrDefaultAsync(m => m.CartID == id);
+                .Include(c => c.Member)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (cart == null)
             {
                 return NotFound();
@@ -46,6 +48,7 @@ namespace EVE.Controllers
         // GET: Carts/Create
         public IActionResult Create()
         {
+            ViewData["Memberid"] = new SelectList(_context.Member, "MemberID", "Address");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace EVE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CartID,MemberID,ProductID,Quantity")] Cart cart)
+        public async Task<IActionResult> Create([Bind("Id,Memberid,Quantity,TotalPrice")] Cart cart)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace EVE.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Memberid"] = new SelectList(_context.Member, "MemberID", "Address", cart.Memberid);
             return View(cart);
         }
 
@@ -78,6 +82,7 @@ namespace EVE.Controllers
             {
                 return NotFound();
             }
+            ViewData["Memberid"] = new SelectList(_context.Member, "MemberID", "Address", cart.Memberid);
             return View(cart);
         }
 
@@ -86,9 +91,9 @@ namespace EVE.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CartID,MemberID,ProductID,Quantity")] Cart cart)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Memberid,Quantity,TotalPrice")] Cart cart)
         {
-            if (id != cart.CartID)
+            if (id != cart.Id)
             {
                 return NotFound();
             }
@@ -102,7 +107,7 @@ namespace EVE.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CartExists(cart.CartID))
+                    if (!CartExists(cart.Id))
                     {
                         return NotFound();
                     }
@@ -113,6 +118,7 @@ namespace EVE.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Memberid"] = new SelectList(_context.Member, "MemberID", "Address", cart.Memberid);
             return View(cart);
         }
 
@@ -125,7 +131,8 @@ namespace EVE.Controllers
             }
 
             var cart = await _context.Cart
-                .FirstOrDefaultAsync(m => m.CartID == id);
+                .Include(c => c.Member)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (cart == null)
             {
                 return NotFound();
@@ -147,7 +154,7 @@ namespace EVE.Controllers
 
         private bool CartExists(int id)
         {
-            return _context.Cart.Any(e => e.CartID == id);
+            return _context.Cart.Any(e => e.Id == id);
         }
     }
 }

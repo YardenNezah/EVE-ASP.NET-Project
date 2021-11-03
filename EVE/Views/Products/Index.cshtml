@@ -9,31 +9,69 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
-
-
-<div class="container" style="display:grid;text-align:center;">
-    <div class="row">
-        @foreach (var item in Model)
-        {
-        <div class="card col-4" style="width:18rem;">
-            <h1>Product ID: @item.ProductID</h1>
-            <p>Product Name: @item.ProductName</p>
-            <p>Product Type: @item.ProductType </p>
-            <p>Description: @item.Description</p>
-            <p>Stock: @item.Stock</p>
-            <p>Price: @item.Price</p>
-            <p>Image: @item.ImageSource</p>
-
-
-            <div style="display:flex;justify-content:space-between;">
-                <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageSource)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FrontImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BackImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageSource)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FrontImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BackImage)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
-                <a href="/Carts/Details/@item.ProductID">Description</a>
-            </div>
-        </div>
-        }
-    </div>
-</div>
-
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
