@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,5 +29,6 @@ namespace EVE.Data
         public DbSet<EVE.Models.ProductType> ProductType { get; set; }
 
         public DbSet<EVE.Models.OrderDetail> OrderDetail { get; set; }
+
     }
 }
