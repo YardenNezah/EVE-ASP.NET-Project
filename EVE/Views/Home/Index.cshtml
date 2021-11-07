@@ -1,16 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div class="text-center" style="width:100%;">
+<div class="text-center" style="width: 100%;background-image: url(~/img/EVE-logo.jpeg);">
     <h1>EVE</h1>
     <h2>By Your Stylish Mode </h2>
-    <button style="background-color: #f3eceb;
-        border-radius: 20px;
-        color: #81734c;width: 270px;left:50%;
-        border: 1px solid #81734c;font-size:30px;display:block;">
+    <br />
+    <button class="bttn">
        Our Products
     </button>
-    <img src="~/img/EVE-logo.jpeg" alt="logo" />
-
+    <br />
+    <input type="text" placeholder="Search A Product" oninput="searchProduct()"/>
 </div>
 
