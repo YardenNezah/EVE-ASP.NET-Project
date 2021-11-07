@@ -10,51 +10,52 @@
 </head>
 <body>
 
-    
+
     <header>
 
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EVE</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="nav-container navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EVE</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="nav-container navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <div class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </div>
                     <div class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
                     </div>
-                <div class="shopping-btn">
-                    <div class="nav-item right-nav">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Carts" asp-action="Index"><i class="bi bi-cart"></i></a>
+                    <div class="shopping-btn">
+                        <div class="nav-item right-nav">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Carts" asp-action="Index"><i class="bi bi-cart"></i></a>
+                        </div>
+                        <div class="nav-item right-nav">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Favorites" asp-action="Index"><i class="bi bi-heart"></i></a>
+                        </div>
                     </div>
-                    <div class="nav-item right-nav">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Favorite" asp-action="Index"><i class="bi bi-heart"></i></a>
-                    </div>
-                </div>
-                <div class="members-btn">
-                    <div class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Register">Sign In</a>
-                    </div>
-                    <div class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Login">Login</a>
-                    </div>
-                    <div class="nav-item" style="display:none">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Logout">Logout</a>
+                    <div class="members-btn">
+                        <div class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Register">Sign In</a>
+                        </div>
+                        <div class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Login">Login</a>
+                        </div>
+                        <div class="nav-item" style="display:none">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Logout">Logout</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
-            </header>
+        </nav>
+    </header>
+    <button onclick="getLocation()" class="get-weather-btn"><i class="bi bi-thermometer"></i>My Current Weather </button>
+    <div id="demo"></div>
 
 
 
-
-    <div class="container"     style="background-color: #f2efe8;">
+    <div class="container" style="background-color: #f2efe8;">
 
         <main role="main" class="pb-3">
             @RenderBody()
@@ -94,6 +95,22 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

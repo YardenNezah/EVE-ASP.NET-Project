@@ -108,3 +108,12 @@ a {
         color: #f2efe8;
         background-color: #c2b38a;
     }
+
+.get-weather-btn {
+    text-align: center;
+    background-color: #f3eceb;
+    color: #81734c;
+    border: 1px solid #81734c;
+    border-radius: 10px;
+    position: relative;
+}
