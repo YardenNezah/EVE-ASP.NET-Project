@@ -117,3 +117,9 @@ a {
     border-radius: 10px;
     position: relative;
 }
+
+.eve-logo {
+    width: 100%;
+    opacity: 0.3;
+    z-index: -1;
+}
