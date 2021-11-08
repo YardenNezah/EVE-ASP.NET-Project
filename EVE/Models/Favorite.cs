@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace EVE.Models
 {
-    public class Cart
+    public class Favorite
     {
-        //Cart Values:
-        [Key]
+        //Favorite Values:
         public int Id { get; set; }
 
         public int Memberid { get; set; }

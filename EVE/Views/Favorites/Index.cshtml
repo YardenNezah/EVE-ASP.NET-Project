@@ -1,10 +1,10 @@
-﻿@model IEnumerable<EVE.Models.Rating>
+﻿@model IEnumerable<EVE.Models.Favorite>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Rating</h1>
+<h1>Favorites:</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -16,10 +16,10 @@
                 @Html.DisplayNameFor(model => model.Member)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product)
+                @Html.DisplayNameFor(model => model.Quantity)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Value)
+                @Html.DisplayNameFor(model => model.TotalPrice)
             </th>
             <th></th>
         </tr>
@@ -31,10 +31,10 @@
                 @Html.DisplayFor(modelItem => item.Member.Address)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Product.ProductName)
+                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Value)
+                @Html.DisplayFor(modelItem => item.TotalPrice)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

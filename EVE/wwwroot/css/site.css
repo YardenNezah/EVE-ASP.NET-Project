@@ -1,67 +1,125 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿html {
+    font-size: 14px;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+        color: #81734c;
+    }
 }
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
 
 body {
     background-color: #f2efe8;
 }
 
-.right-nav {
-    position: absolute;
-
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
+a {
+    color: #0366d6;
+}
 
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-item:hover {
+    background-color: #f3eceb;
+    border-radius: 20px;
+    color: #81734c;
+}
+
+.members-btn {
+    display: flex;
+    border: 1px solid black;
+}
+
+.shopping-btn {
+    display: flex;
+}
+
+a {
+    color: black;
+}
+
+    a:hover {
+        color: #81734c;
+    }
+
+.bttn {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+    width: 270px;
+    font-weight: bold;
+    padding: 14px 0px;
+    position: relative;
+    margin-bottom: 100px;
+    background-color: #f3eceb;
+    border-radius: 50px;
+    color: #81734c;
+    border: 1px solid #81734c;
+    font-size: 25px;
+    -webkit-transition: 0.3s all ease;
+    transition: 0.3s ease all;
+}
+
+    .bttn:hover {
+        -webkit-transition: 0.5s all ease;
+        transition: 0.5s all ease;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        color: #f2efe8;
+        background-color: #c2b38a;
+    }
+
+.get-weather-btn {
+    text-align: center;
+    background-color: #f3eceb;
+    color: #81734c;
+    border: 1px solid #81734c;
+    border-radius: 10px;
+    position: relative;
+}
+
+.eve-logo {
+    width: 100%;
+    opacity: 0.3;
+    z-index: -1;
+}
