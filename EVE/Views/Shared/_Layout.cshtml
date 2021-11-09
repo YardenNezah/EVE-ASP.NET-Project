@@ -62,7 +62,7 @@
         </main>
     </div>
 
-
+    <hr />
     <div class="bottom" id="bottom" style=" display: flex; flex-direction: row; justify-content: space-between; width: 100%; padding:20px;">
         <div class="footerList" id="aboutUs">
             <h3>About Us</h3>
@@ -107,6 +107,10 @@
         }
 
         function showPosition(position) {
+            const locationk = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=jVJocZJyoDevTNB1Otg2AHap0mSydbs9&q=(31.961020%2C34.801620)";
+            const forecasts = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/{locationk}?apikey=jVJocZJyoDevTNB1Otg2AHap0mSydbs9";
+
+
             x.innerHTML = "Latitude: " + position.coords.latitude +
                 "<br>Longitude: " + position.coords.longitude;
         }

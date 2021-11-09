@@ -63,6 +63,15 @@ button.accept-policy {
     color: #81734c;
 }
 
+a {
+    color: black;
+}
+
+    a:hover {
+        color: #81734c;
+    }
+
+
 .members-btn {
     display: flex;
     border: 1px solid black;
@@ -72,13 +81,6 @@ button.accept-policy {
     display: flex;
 }
 
-a {
-    color: black;
-}
-
-    a:hover {
-        color: #81734c;
-    }
 
 .bttn {
     letter-spacing: 2px;
@@ -89,7 +91,6 @@ a {
     font-weight: bold;
     padding: 14px 0px;
     position: relative;
-    margin-bottom: 100px;
     background-color: #f3eceb;
     border-radius: 50px;
     color: #81734c;
@@ -102,9 +103,6 @@ a {
     .bttn:hover {
         -webkit-transition: 0.5s all ease;
         transition: 0.5s all ease;
-        left: 0;
-        right: 0;
-        opacity: 1;
         color: #f2efe8;
         background-color: #c2b38a;
     }
@@ -120,6 +118,6 @@ a {
 
 .eve-logo {
     width: 100%;
-    opacity: 0.3;
+    opacity: 0.1;
     z-index: -1;
 }

@@ -5,7 +5,10 @@
 }
 
 <h1>Products:</h1>
-
+<form>
+    <input type="text" placeholder="Search A Product" id="input" />
+    <i class="bi bi-search" onclick="searchProduct()"></i>
+</form>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -40,38 +43,58 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductType.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageSource)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FrontImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BackImage)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageSource)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FrontImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BackImage)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+
+<script>
+    function searchProduct() {
+        var input = document.getElementById('input').value;
+        console.log(input);
+        console.log(model.ProductName);
+        console.log(model);
+        console.log(ProductName)
+        var item;
+        for (item in Model) {
+            console.log((modelItem => item.ProductName));
+            if (input == '') {
+                alert("You Must Enter An input!");
+            }
+
+        }
+    }
+</script>

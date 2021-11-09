@@ -18,8 +18,6 @@ namespace EVE.Models
 
         public int Quantity { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Display(Name = "Price")]
         public double TotalPrice { get; set; }
     }
 }
