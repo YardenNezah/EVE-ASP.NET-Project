@@ -53,24 +53,23 @@ namespace EVE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login([Bind("Username,Password")] Member member)
         {
-            if (ModelState.IsValid)
-            {
-                var q = from u in _context.Member
-                        where u.Username == member.Username &&
-                                u.Password == member.Password
-                        select u;
+          
+            var q = from u in _context.Member
+                    where u.Username == member.Username &&
+                            u.Password == member.Password
+                    select u;
 
-                if (q.Count() > 0)
-                {
-                    loginUser(q.First().Username, q.First().Type);
-                    return RedirectToAction(nameof(Index));
-                }
-                else
-                {
-                    ViewData["Error"] = "Username/password is incorrect.";
-                }
+            if (q.Count() > 0)
+            {
+                loginUser(q.First().Username, q.First().Type);
+                return RedirectToAction(nameof(Index));
             }
-            return View(member);
+            else
+            {
+                ViewData["Error"] = "Username/password is incorrect.";
+            }
+            
+        return View(member);
         }
         public async Task<IActionResult> Logout()
         {
@@ -86,6 +85,7 @@ namespace EVE.Controllers
         }
 
         // GET: Members
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Member.ToListAsync());
@@ -144,7 +144,7 @@ namespace EVE.Controllers
 
         // GET: Members/Edit/5
         //Only admin can edit this felids
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)

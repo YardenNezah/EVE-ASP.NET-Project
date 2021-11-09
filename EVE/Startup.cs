@@ -61,7 +61,7 @@ namespace EVE
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseSession();
+            //app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -69,18 +69,8 @@ namespace EVE
 
             app.UseAuthentication();
             app.UseAuthorization();
-            //app.UseSession();
+            app.UseSession();
 
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetRequiredService<EVEContext>();
-                context.Database.Migrate();
-            }
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetRequiredService<EVEContext>();
-                context.Database.EnsureCreated();
-            }
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
