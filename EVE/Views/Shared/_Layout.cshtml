@@ -20,12 +20,19 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
                 <div class="nav-container navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <div class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <div class="leftnav">
+                        <div class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </div>
+                        <div class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                        </div>
                     </div>
-                    <div class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                    <div>
+                        <input type="text" placeholder="Hey Girl, What are you looking for?" oninput="searchProduct()" />
+                        <i class="bi bi-search"></i>
                     </div>
                     <div class="shopping-btn">
                         <div class="nav-item right-nav">
@@ -34,20 +41,21 @@
                         <div class="nav-item right-nav">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Favorites" asp-action="Index"><i class="bi bi-heart"></i></a>
                         </div>
-                    </div>
-                    <div class="members-btn">
-                        <div class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Register">Sign In</a>
-                        </div>
-                        <div class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Login">Login</a>
-                        </div>
-                        <div class="nav-item" style="display:none">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Logout">Logout</a>
+                        <div class="members-btn">
+                            <div class="nav-item user-btn">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Register">Sign In </a>
+                            </div>
+
+                            <div class="nav-item user-btn">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Login">Login</a>
+                            </div>
+                            <div class="nav-item" style="display:none">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Logout">Logout</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
         </nav>
     </header>
     <button onclick="getLocation()" class="get-weather-btn"><i class="bi bi-thermometer"></i>My Current Weather </button>

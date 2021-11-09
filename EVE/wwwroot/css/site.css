@@ -74,7 +74,6 @@ a {
 
 .members-btn {
     display: flex;
-    border: 1px solid black;
 }
 
 .shopping-btn {
@@ -82,6 +81,22 @@ a {
 }
 
 
+.user-btn {
+border:0.3px solid black;
+border-radius: 30px;
+margin: 0 5px;
+}
+
+input {
+
+ font-size: 16px;
+ width: 300px;
+}
+
+.leftnav {
+
+display: flex;
+}
 .bttn {
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -90,7 +105,6 @@ a {
     width: 270px;
     font-weight: bold;
     padding: 14px 0px;
-    position: relative;
     background-color: #f3eceb;
     border-radius: 50px;
     color: #81734c;
@@ -98,6 +112,7 @@ a {
     font-size: 25px;
     -webkit-transition: 0.3s all ease;
     transition: 0.3s ease all;
+    margin: 20px;
 }
 
     .bttn:hover {
@@ -121,3 +136,4 @@ a {
     opacity: 0.1;
     z-index: -1;
 }
+
