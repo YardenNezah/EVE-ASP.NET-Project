@@ -71,7 +71,6 @@ a {
         color: #81734c;
     }
 
-
 .members-btn {
     display: flex;
 }
@@ -80,47 +79,60 @@ a {
     display: flex;
 }
 
-
 .user-btn {
-border:0.3px solid black;
-border-radius: 30px;
-margin: 0 5px;
+    border: 0.3px solid black;
+    border-radius: 30px;
+    margin: 0 5px;
 }
 
 input {
-
- font-size: 16px;
- width: 300px;
+    font-size: 16px;
+    width: 300px;
 }
 
 .leftnav {
-
-display: flex;
+    display: flex;
 }
+
 .bttn {
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
     display: inline-block;
-    width: 270px;
+    width: 300px;
     font-weight: bold;
     padding: 14px 0px;
-    background-color: #f3eceb;
-    border-radius: 50px;
-    color: #81734c;
-    border: 1px solid #81734c;
+    height: 300px;
+    border-radius: 150px;
+    color: #f2efe8;
+    border: 3px solid #81734c;
     font-size: 25px;
     -webkit-transition: 0.3s all ease;
     transition: 0.3s ease all;
     margin: 20px;
+    background-repeat: no-repeat;
 }
 
-    .bttn:hover {
-        -webkit-transition: 0.5s all ease;
-        transition: 0.5s all ease;
-        color: #f2efe8;
-        background-color: #c2b38a;
-    }
+.tops-btn {
+    background-image: url(../img/Tops.jpg);
+    background-size: 310px;
+}
+
+.bestsellers-btn {
+    background-image: url(../img/Bestsellers.jpg);
+    background-size: 300px;
+}
+
+.bottoms-btn {
+    background-image: url(../img/Bottoms.jpg);
+    background-size: 315px;
+}
+
+.bttn:hover {
+    -webkit-transition: 0.5s all ease;
+    transition: 0.5s all ease;
+    color:#c2b38a;
+}
 
 .get-weather-btn {
     text-align: center;
@@ -137,3 +149,16 @@ display: flex;
     z-index: -1;
 }
 
+.videos {
+    z-index: 1;
+}
+
+.eve-header {
+    font-size: 70px;
+    color: #81734c;
+}
+
+.eve-secondary-header {
+    font-size: 30px;
+    color: #81734c;
+}

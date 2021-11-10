@@ -2,13 +2,32 @@
     ViewData["Title"] = "Home Page";
 }
 <div class="text-center" style="width: 100%;">
-    <h1>EVE</h1>
-    <h2>By Your Stylish Mode </h2>
+    <p class="eve-header">EVE</p>
+    <p class="eve-secondary-header">By Your Stylish Mode </p>
     <br />
 
-    <button class="bttn">Our Products</button>
+    <div class="products-buttons">
+        <button class="bttn tops-btn">Tops</button>
+        <button class="bttn bestsellers-btn">Best Sellers</button>
+        <button class="bttn bottoms-btn">Bottoms</button>
+    </div>
 
+    <div class="videos">
+        <video width="800" height="340" class="best-sellers-video" controls autoplay>
+            <source src="~/video/production ID_3888252.mp4" type="video/mp4">
+        </video>
+        <br />
+        <video width="400" height="340" class="tops-video" controls autoplay>
+            <source src="~/video/production ID_3888262.mp4" type="video/mp4">
+        </video>
+        <video width="400" height="340" class="bottoms-video" controls autoplay>
+            <source src="~/video/production ID_3888268.mp4" type="video/mp4">
+        </video>
+    </div>
 
     <img src="~/img/EVE-logo.jpeg" class="eve-logo" alt="eve-logo" />
+
+
+
 </div>
 
