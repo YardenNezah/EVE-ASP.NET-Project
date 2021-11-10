@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using EVE.Models;
+using EVE.Controllers;
 
 namespace EVE.Data
 {
@@ -31,6 +32,8 @@ namespace EVE.Data
         public DbSet<EVE.Models.OrderDetail> OrderDetail { get; set; }
 
         public DbSet<EVE.Models.Favorite> Favorite { get; set; }
+
+        public DbSet<EVE.Controllers.Stores> Stores { get; set; }
 
     }
 }

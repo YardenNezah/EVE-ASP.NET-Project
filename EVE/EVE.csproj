@@ -19,6 +19,11 @@
     <PackageReference Include="MySql.Data" Version="8.0.26" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.2" />
     <PackageReference Include="ConnectionString" Version="2.0.0" />
+    <PackageReference Include="TweetSharp" Version="2.3.1" />
+    <PackageReference Include="Paramore.Brighter" Version="8.1.1399" />
+    <PackageReference Include="System.Reactive.Windows.Threading" Version="5.0.0" />
+    <PackageReference Include="WindowsBase" Version="4.6.1055" />
+    <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.7" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +31,11 @@
     <None Remove="MySql.Data" />
     <None Remove="Pomelo.EntityFrameworkCore.MySql" />
     <None Remove="ConnectionString" />
+    <None Remove="TweetSharp" />
+    <None Remove="Paramore.Brighter" />
+    <None Remove="System.Reactive.Windows.Threading" />
+    <None Remove="WindowsBase_Core.STW" />
+    <None Remove="Microsoft.AspNet.WebPages" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

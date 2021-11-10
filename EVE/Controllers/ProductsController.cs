@@ -8,16 +8,29 @@ using Microsoft.EntityFrameworkCore;
 using EVE.Data;
 using EVE.Models;
 using Microsoft.AspNetCore.Authorization;
+using TweetSharp;
+using System.Net;
+using Microsoft.AspNetCore.Components;
+
 
 namespace EVE.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly EVEContext _context;
+        private string key;
+        private string secret;
+        private string token;
+        private string tokenSecret;
 
         public ProductsController(EVEContext context)
         {
             _context = context;
+            key = "fN5m70wwnh1q28jNUlB0u3mVS";
+            secret = "0iTut7xdPEdGAd8kgOS4joe4C2kc8TOEcMAF8ksRtvJizS6SFI";
+            token = "1458295109842309120-74SAtZaKBMD91fYmSH4HeCfwIPHL0X";
+            tokenSecret = "59bIGSheKID3VJKRgQI3pRgGBnhcSN5cqrwRDAQtQNkeL";
+
         }
 
         // GET: Products
@@ -65,9 +78,19 @@ namespace EVE.Controllers
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+
+                ViewData["ProductTypeId"] = new SelectList(_context.Set<ProductType>(), "Id", "Name", product.ProductTypeId);
+                var service = new TweetSharp.TwitterService(key, secret);
+                service.AuthenticateWith(token, tokenSecret);
+                TwitterUser twitteruser = service.VerifyCredentials(new VerifyCredentialsOptions());
+                var tempproduct = await _context.Product.FirstOrDefaultAsync(p => p.ProductID == product.ProductID);
+                string tweetmsg = string.Format("Come to see our new {0} only for {1}₪", tempproduct.ProductName,
+                    tempproduct.Price);
+                service.SendTweet(new SendTweetOptions { Status = tweetmsg }); 
+             
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductTypeId"] = new SelectList(_context.Set<ProductType>(), "Id", "Name", product.ProductTypeId);
+
             return View(product);
         }
 
