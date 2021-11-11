@@ -12,73 +12,22 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageSource)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FrontImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BackImage)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="grid-container">
+    <div class="row">
+    
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductType.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Stock)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageSource)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FrontImage)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BackImage)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
-                </td>
-            </tr>
+        <div class="card col-3" stylw="width:300px;">
+            <h1 class="card-name">@item.ProductName</h1>
+            <h2 class="product-type">@item.ProductType.Name</h2>
+            <p class="item-description"> @item.Description</p>
+            <p class="item-price"> @item.Price</p>
+            <img src="@item.FrontImage" class="item-img" alt="img" />
+            <img src="@item.ImageSource" class="item-imgsrc" alt="img" />
+        </div>
         }
-    </tbody>
-</table>
+    </div>
+</div>
 
 
 @*<script>

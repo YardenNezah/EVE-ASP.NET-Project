@@ -74,9 +74,9 @@
     <div class="bottom" id="bottom" style=" display: flex; flex-direction: row; justify-content: space-between; width: 100%; padding:20px;">
         <div class="footerList" id="aboutUs">
             <h3>About Us</h3>
-            <a href="#" class="about">About</a>  <br>
-            <a href="#" class="developers">Developers</a> <br>
-            <a href="#" class="careers">Careers</a>
+            <a class="about"  asp-area="" asp-controller="Home" asp-action="About">About</a>  <br>
+            <a asp-area="" asp-controller="Home" asp-action="Developers" class="developers">Developers</a> <br>
+            <a href="~/../Controllers/MembersController.cs" class="careers">Careers</a>
         </div>
         <div class="footerList" id="termsOfUse">
             <h3>Terms Of Use</h3>
@@ -89,7 +89,7 @@
             <a href="#" class="adress">Address</a> <br>
             <a href="#" class="phones">Phones</a> <br>
             <a href="#" class="email">Email</a> <br>
-            <a href="#" class="email">Leave a message</a>
+            <a href="#" class="message">Leave a message</a>
         </div>
     </div>
 

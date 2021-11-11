@@ -19,13 +19,9 @@ namespace EVE.Data
 
         public DbSet<EVE.Models.Member> Member { get; set; }
 
-        public DbSet<EVE.Models.Rating> Rating { get; set; }
-
         public DbSet<EVE.Models.Cart> Cart { get; set; }
 
         public DbSet<EVE.Models.Comment> Comment { get; set; }
-
-        public DbSet<EVE.Models.About> About { get; set; }
 
         public DbSet<EVE.Models.ProductType> ProductType { get; set; }
 

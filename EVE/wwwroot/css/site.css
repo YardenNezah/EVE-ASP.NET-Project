@@ -131,7 +131,7 @@ input {
 .bttn:hover {
     -webkit-transition: 0.5s all ease;
     transition: 0.5s all ease;
-    color:#c2b38a;
+    color: #c2b38a;
 }
 
 .get-weather-btn {
@@ -184,3 +184,9 @@ input {
         background-color: #dad1d0;
         color: #81734c;
     }
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
