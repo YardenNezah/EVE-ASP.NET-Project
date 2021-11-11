@@ -4,11 +4,9 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>Create</h1>
+<h1 class="eve-header">Sign Up</h1>
 
-<h4>Member</h4>
-<hr />
-<div class="row">
+<div class="register-form">
     <div class="col-md-4">
         <form asp-action="Register">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -48,11 +46,11 @@
                 <span asp-validation-for="Birthdate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Sign Up" class="submit-btn" />
             </div>
             @if (!String.IsNullOrEmpty(ViewBag.Error))
             {
-        <div class="text-danger">@ViewBag.Error</div>            }
+                <div class="text-danger">@ViewBag.Error</div>}
         </form>
     </div>
 </div>

@@ -156,9 +156,31 @@ input {
 .eve-header {
     font-size: 70px;
     color: #81734c;
+    text-align: center;
 }
 
 .eve-secondary-header {
     font-size: 30px;
     color: #81734c;
 }
+
+.register-form, .login-form {
+    left: 35%;
+    position: relative;
+    margin-top: 15px;
+}
+
+.submit-btn {
+    background-color: #c2b38a;
+    width: 340px;
+    height: 55px;
+    border: 1px solid #81734c;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+}
+
+    .submit-btn:hover {
+        background-color: #dad1d0;
+        color: #81734c;
+    }
