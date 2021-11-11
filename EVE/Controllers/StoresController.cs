@@ -21,11 +21,14 @@ namespace EVE.Controllers
         public string lat;
         [JsonProperty("lng")]
         public string lng;
+        [JsonProperty("address")]
+        public string address;
 
-        public Location(string lat, string lng)
+        public Location(string lat, string lng,string address)
         {
             this.lat = lat;
             this.lng = lng;
+            this.address = address;
         }
     }
     public class StoresController : Controller
@@ -45,6 +48,7 @@ namespace EVE.Controllers
         {
 
             string address = street + "," + housenumber + "," + city + "," + countrey;
+            string address2 = street + " " + housenumber + " " + city + " " + countrey;
             string apiKey = "AIzaSyDVuiJ4kCTsVZkbihbJOhBO2Cm0qFAssJw";
             string requestUri = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?key={1}&address={0}&sensor=false", Uri.EscapeDataString(address), apiKey);
 
@@ -56,7 +60,7 @@ namespace EVE.Controllers
             XElement locationElement = result.Element("geometry").Element("location");
             XElement lat = locationElement.Element("lat");
             XElement lng = locationElement.Element("lng");
-            storesLocation.Add(new Location(lat.Value, lng.Value));
+            storesLocation.Add(new Location(lat.Value, lng.Value, address2));
       
 
 
@@ -77,6 +81,7 @@ namespace EVE.Controllers
             
             }
             ViewBag.storesLocation = storesLocation.ToArray();
+            ViewBag.storesaddress = _context.Stores.ToList();
 
             return View(await _context.Stores.ToListAsync());
         }

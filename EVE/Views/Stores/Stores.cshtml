@@ -23,7 +23,7 @@ function initMap() {
         });
 
 
-        function markStore(storeInfo) {
+    function markStore(storeInfo, address) {
 
             // Create a marker and set its position.
             var marker = new google.maps.Marker({
@@ -31,26 +31,26 @@ function initMap() {
                 position: storeInfo,
                 title: "EvE store"
             });
+
             // show store info when marker is clicked
             marker.addListener('click', function () {
-                showStoreInfo("EvE store");
+                showStoreInfo(address);
             });
 
 
     }
 
     // show store info in text box
-    function showStoreInfo(storeInfo) {
+    function showStoreInfo(address) {
         var info_div = document.getElementById('info_div');
-        info_div.innerHTML = 'Store name: '
-            + storeInfo;
+        info_div.innerHTML = 'Store address: '
+            + address;
     }
 
     var stores=@Html.Raw(JsonConvert.SerializeObject(ViewBag.storesLocation));
-
     stores.forEach(function (store) {
-        window.alert(store.lat + " " + store.lng);
-        markStore(new google.maps.LatLng(store.lat, store.lng));
+        window.alert(store.address);
+        markStore(new google.maps.LatLng(store.lat, store.lng), store.address);
     });
     }</script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVuiJ4kCTsVZkbihbJOhBO2Cm0qFAssJw&callback=initMap" async defer"></script>
