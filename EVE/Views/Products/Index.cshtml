@@ -31,57 +31,57 @@
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImageSource)
+                @Html.DisplayNameFor(model => model.Image1)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FrontImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BackImage)
+                @Html.DisplayNameFor(model => model.Image2)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductType.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Stock)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageSource)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FrontImage)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BackImage)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
-                </td>
-            </tr>
-        }
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @if(item.Image1 != null)
+                {
+                   string img1 = Convert.ToBase64String(item.Image1);
+                   <img src="data:image/png;base64,@img1" width="60" height="60"/>
+                }
+            </td>
+            <td>
+                @if(item.Image2 != null)
+                {
+                   string img2 = Convert.ToBase64String(item.Image2);
+                <img src="data:image/png;base64,@img2" width="60" height="60" />
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
 
-
-@*<script>
+<script>
     function searchProduct() {
         var input = document.getElementById('input').value;
         console.log(input);
@@ -97,4 +97,4 @@
 
         }
     }
-</script>*@
+</script>

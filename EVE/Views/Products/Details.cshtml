@@ -41,22 +41,24 @@
             @Html.DisplayFor(model => model.Price)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageSource)
+            @Html.DisplayNameFor(model => model.Image1)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageSource)
+        <dd class="col-sm-10">
+            @if (Model.Image1 != null)
+           {
+            string img1 = Convert.ToBase64String(Model.Image1);
+            <img src="data:image/png;base64,@img1" width="60" height="60" />
+           }
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FrontImage)
+            @Html.DisplayNameFor(model => model.Image2)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FrontImage)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BackImage)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BackImage)
+        <dd class="col-sm-10">
+            @if (Model.Image2 != null)
+           {
+            string img1 = Convert.ToBase64String(Model.Image2);
+            <img src="data:image/png;base64,@img1" width="60" height="60" />
+           }
         </dd>
     </dl>
 </div>

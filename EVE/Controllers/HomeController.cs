@@ -27,9 +27,11 @@ namespace EVE.Controllers
         //public Nullable<double> X = null;
 
         [DataMember(Name = "y")]
+        [JsonProperty("y")]
         public Nullable<double> Y = null;
 
         [DataMember(Name = "label")]
+        [JsonProperty("label")]
         public string Label = "";
     }
     public class HomeController : Controller
@@ -76,6 +78,7 @@ namespace EVE.Controllers
                 
             }
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            ViewBag.DataPoints2 = dataPoints;
             return View();
 
         }

@@ -49,7 +49,6 @@ function initMap() {
 
     var stores=@Html.Raw(JsonConvert.SerializeObject(ViewBag.storesLocation));
     stores.forEach(function (store) {
-        window.alert(store.address);
         markStore(new google.maps.LatLng(store.lat, store.lng), store.address);
     });
     }</script>

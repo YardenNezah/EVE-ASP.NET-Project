@@ -1,9 +1,12 @@
-﻿@{
+﻿@using Newtonsoft.Json
+@{
     ViewData["Title"] = "Graph";
 }
 <head>
     <script>
 window.onload = function () {
+
+	var stores =@Html.Raw(JsonConvert.SerializeObject(ViewBag.DataPoints2));
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,

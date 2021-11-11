@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace EVE.Models
 {
@@ -30,11 +32,15 @@ namespace EVE.Models
         [DataType(DataType.Currency)]
         public double Price { get; set; }
 
-        public String ImageSource { get; set; }
+        public Byte[] Image1 { get; set; }
 
-        public String FrontImage { get; set; }
+        [NotMapped]
+        public IFormFile FrontImage { get; set; }
 
-        public String BackImage { get; set; }
+        public Byte[] Image2 { get; set; }
+
+        [NotMapped]
+        public IFormFile BackImage { get; set; }
 
         public IList<Comment> Comments { get; set; }
     }
