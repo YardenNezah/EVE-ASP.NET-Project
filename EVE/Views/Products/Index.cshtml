@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<EVE.Models.Product>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
 <h1>Products:</h1>
 <form>
@@ -40,63 +38,45 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductType.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @if(item.Image1 != null)
-                {
-                   string img1 = Convert.ToBase64String(item.Image1);
-                   <img src="data:image/png;base64,@img1" width="60" height="60"/>
-                }
-            </td>
-            <td>
-                @if(item.Image2 != null)
-                {
-                   string img2 = Convert.ToBase64String(item.Image2);
-                <img src="data:image/png;base64,@img2" width="60" height="60" />
-                }
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
-<div class="grid-container">
-    <div class="row">
-    
         @foreach (var item in Model)
         {
-        <div class="card col-3" stylw="width:300px;">
-            <h1 class="card-name">@item.ProductName</h1>
-            <h2 class="product-type">@item.ProductType.Name</h2>
-            <p class="item-description"> @item.Description</p>
-            <p class="item-price"> @item.Price</p>
-            <img src="@item.FrontImage" class="item-img" alt="img" />
-            <img src="@item.ImageSource" class="item-imgsrc" alt="img" />
-        </div>
-        }
-    </div>
-</div>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductType.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Stock)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @if (item.Image1 != null)
+        {
+            string img1 = Convert.ToBase64String(item.Image1);
+<img src="data:image/png;base64,@img1" width="60" height="60" />                }
+    </td>
+    <td>
+        @if (item.Image2 != null)
+        {
+            string img2 = Convert.ToBase64String(item.Image2);
+<img src="data:image/png;base64,@img2" width="60" height="60" />                }
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
+    </td>
+</tr>}
+    </tbody>
+</table>
+<!--
 <script>
     function searchProduct() {
         var input = document.getElementById('input').value;
@@ -113,4 +93,4 @@
 
         }
     }
-</script>
+</script>-->
