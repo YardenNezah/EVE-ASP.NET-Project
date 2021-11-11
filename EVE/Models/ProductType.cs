@@ -13,6 +13,6 @@ namespace EVE.Models
         [Required]
         [Display(Name = "Product Type")]
         public String Name { get; set; }
-        public IList<Product> Products { get; set; } // meny to one
+        public IList<Product> Products { get; set; } // many to one
     }
 }

@@ -1,46 +1,31 @@
-﻿html {
-    font-size: 14px;
+﻿
+:root {
+    --background-color: #f2efe8;
+    --beige-color: #c2b38a;
+    --light-color: #e5e5e5;
+    --nav-hover-color: #f3eceb;
+    --dark-brown-color: #81734c;
+    --cream-color: #dad1d0;
 }
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-        color: #81734c;
-    }
+html {
+    font-size: 15px;
 }
 
 body {
-    background-color: #f2efe8;
-}
-
-a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
-}
-
-a {
-    color: #0366d6;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: var(--background-color);
+    color: var(--dark-brown-color);
 }
 
 .border-top {
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid var(--light-color);
+    text-align: center;
+    bottom: 0;
+    width: 100%;
 }
 
 .border-bottom {
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid var(--light-color);
 }
 
 .box-shadow {
@@ -52,15 +37,28 @@ button.accept-policy {
     line-height: inherit;
 }
 
+.mobile-menu, .main-menu, .mobile-menu-link {
+    display: none;
+}
+
+.main-menu {
+    font-size: 16px;
+    width: 80px;
+    height: 50px;
+    border-radius: 25px;
+    padding-top: 10px;
+    background-color: var(--nav-hover-color);
+}
+
 .nav-container {
     display: flex;
     justify-content: space-between;
 }
 
 .nav-item:hover {
-    background-color: #f3eceb;
+    background-color: var(--nav-hover-color);
     border-radius: 20px;
-    color: #81734c;
+    color: var(--dark-brown-color);
 }
 
 a {
@@ -68,16 +66,13 @@ a {
 }
 
     a:hover {
-        color: #81734c;
+        color: var(--dark-brown-color);
     }
 
-.members-btn {
-    display: flex;
-}
 
-.shopping-btn {
-    display: flex;
-}
+    .shopping-btn, .members-btn, .leftnav {
+        display: flex;
+    }
 
 .user-btn {
     border: 0.3px solid black;
@@ -90,10 +85,6 @@ input {
     width: 300px;
 }
 
-.leftnav {
-    display: flex;
-}
-
 .bttn {
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -104,14 +95,20 @@ input {
     padding: 14px 0px;
     height: 300px;
     border-radius: 150px;
-    color: #f2efe8;
-    border: 3px solid #81734c;
+    color: var(--background-color);
+    border: 3px solid var(--dark-brown-color);
     font-size: 25px;
     -webkit-transition: 0.3s all ease;
     transition: 0.3s ease all;
     margin: 20px;
     background-repeat: no-repeat;
 }
+
+    .bttn:hover {
+        -webkit-transition: 0.5s all ease;
+        transition: 0.5s all ease;
+        color: var(--beige-color);
+    }
 
 .tops-btn {
     background-image: url(../img/Tops.jpg);
@@ -128,17 +125,11 @@ input {
     background-size: 315px;
 }
 
-.bttn:hover {
-    -webkit-transition: 0.5s all ease;
-    transition: 0.5s all ease;
-    color: #c2b38a;
-}
-
 .get-weather-btn {
     text-align: center;
-    background-color: #f3eceb;
-    color: #81734c;
-    border: 1px solid #81734c;
+    background-color: var(--nav-hover-color);
+    color: var(--dark-brown-color);
+    border: 1px solid var(--dark-brown-color);
     border-radius: 10px;
     position: relative;
 }
@@ -155,13 +146,13 @@ input {
 
 .eve-header {
     font-size: 70px;
-    color: #81734c;
+    color: var(--dark-brown-color);
     text-align: center;
 }
 
 .eve-secondary-header {
     font-size: 30px;
-    color: #81734c;
+    color: var(--dark-brown-color);
 }
 
 .register-form, .login-form {
@@ -170,19 +161,24 @@ input {
     margin-top: 15px;
 }
 
+.footer-content {
+    position: relative;
+    margin-top: 15px;
+}
+
 .submit-btn {
-    background-color: #c2b38a;
+    background-color: var(--beige-color);
     width: 340px;
     height: 55px;
-    border: 1px solid #81734c;
+    border: 1px solid var(--dark-brown-color);
     border-radius: 10px;
     font-size: 20px;
-    color: white;
+    color: var(--cream-color);
 }
 
     .submit-btn:hover {
-        background-color: #dad1d0;
-        color: #81734c;
+        background-color: var(--cream-color);
+        color: var(--dark-brown-color);
     }
 
 
@@ -190,3 +186,112 @@ input {
     display: grid;
     grid-template-columns: 33% 33% 33%;
 }
+
+
+
+
+
+/*Media queries for responsive design:*/
+@media (max-width: 992px) {
+    .user-btn {
+        border: 0.3px solid black;
+        border-radius: 30px;
+        margin: 0 3px;
+        font-size: 13px;
+        height: 30px;
+    }
+    input {
+        width: 200px;
+    }
+        input::-webkit-input-placeholder {
+            font-size: 11px;
+        }
+    .container {
+        font-size: 14px;
+    }
+    .best-sellers-video {
+        width: 500px;
+    }
+}
+
+@media (max-width: 795px) {
+    input {
+        width: 150px;
+    }
+        input::-webkit-input-placeholder { 
+           font-size: 9px;
+        }
+    .container, .bottom {
+        font-size: 12px;
+    }
+    .user-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        padding-right: 5px;
+        text-align: center;
+    }
+    .navbar-brand {
+        margin-left:5px;
+    }
+    .eve-header {
+        font-size: 55px;
+    }
+    .eve-secondary-header {
+        font-size: 20px;
+    }
+    .best-sellers-video {
+        width: 400px;
+    }
+    .mobile-menu {
+        display: flex;
+    }
+
+}
+
+
+
+    @media (max-width: 768px) {
+        html {
+            font-size: 14px;
+        }
+    }
+
+
+
+    /*
+.eve {
+    animation: text-shadow 1.5s ease-in-out infinite;
+}
+
+.eve:hover {
+    animation-play-state: paused;
+}
+
+@keyframes text-shadow {
+    0% {
+        transform: translateY(0);
+        text-shadow: 0 0 0 var(--dark-brown-color), 0 0 0 var(--beige-color), 0 0 0 var(--nav-hover-color), 0 0 0 var(--cream-color);
+    }
+
+    20% {
+        transform: translateY(-1em);
+        text-shadow: 0 0.125em 0 var(--dark-brown-color), 0 0.25em 0 var(--beige-color), 0 -0.125em 0 var(--nav-hover-color), 0 -0.25em 0 var(--cream-color);
+    }
+
+    40% {
+        transform: translateY(0.5em);
+        text-shadow: 0 -0.0625em 0 var(--dark-brown-color), 0 -0.125em 0 var(--beige-color), 0 0.0625em 0 var(--nav-hover-color), 0 0.125em 0 var(--cream-color);
+    }
+
+    60% {
+        transform: translateY(-0.25em);
+        text-shadow: 0 0.03125em 0 var(--dark-brown-color), 0 0.0625em 0 var(--beige-color), 0 -0.03125em 0 #fb203b, 0 -0.0625em 0 var(--cream-color);
+    }
+
+    80% {
+        transform: translateY(0);
+        text-shadow: 0 0 0 #0c2ffb, 0 0 0 #2cfcfd, 0 0 0 #fb203b, 0 0 0 #fefc4b;
+    }
+}
+*/
