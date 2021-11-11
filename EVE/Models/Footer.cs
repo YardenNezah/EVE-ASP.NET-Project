@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EVE.Models
 {
-    public class About
+    public class Footer
     {
         public int Id { get; set; }
 

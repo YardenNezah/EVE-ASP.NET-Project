@@ -4,14 +4,16 @@ using EVE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EVE.Migrations
 {
     [DbContext(typeof(EVEContext))]
-    partial class EVEContextModelSnapshot : ModelSnapshot
+    [Migration("20211111144459_products")]
+    partial class products
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -201,6 +203,9 @@ namespace EVE.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BackImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("CartId")
                         .HasColumnType("int");
 
@@ -211,11 +216,11 @@ namespace EVE.Migrations
                     b.Property<int?>("FavoriteId")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("Image1")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("FrontImage")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Image2")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("ImageSource")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("OrderDetailId")
                         .HasColumnType("int");

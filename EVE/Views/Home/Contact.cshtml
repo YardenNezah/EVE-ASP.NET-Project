@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="contact">
+<h2>Address:</h2>
+Elie Wiesel 2 (The College Of Management Academic Studies).
+
+<h2>Phones:</h2>
++972523383837
+
+<h2>Email:</h2>
+EVE@gmail.com
+
+<h2>Leave a message:</h2>
+<form onsubmit="function submit() {
+        alert(" Your Message Has Been Sent!");
+      }">
+    <label for="name">Name:</label>
+    <input type="text" name="name" />
+    <label for="phone">Phone:</label>
+    <input type="text" name="phone" />
+    <label for="topic">Topic:</label>
+    <input type="text" name="topic" />
+    <label for="message">Message:</label>
+    <textarea placeholder="Leave a message here" rows="5" cols="50" />
+    <input type="submit" value="Submit" class="submit-btn" />
+</form>
+
+</div>
