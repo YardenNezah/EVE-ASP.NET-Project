@@ -49,16 +49,21 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Favorites" asp-action="Index"><i class="bi bi-heart"></i></a>
                         </div>
                         <div class="members-btn">
-                            <div class="nav-item user-btn">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Register">Sign In </a>
-                            </div>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <div class="nav-item user-btn">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Register">Sign In </a>
+                                </div>
 
+                                <div class="nav-item user-btn">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Login">Login</a>
+                                </div>
+                            }
+                            else { 
                             <div class="nav-item user-btn">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Login">Login</a>
-                            </div>
-                            <div class="nav-item" style="display:none">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Logout">Logout</a>
                             </div>
+                            }
                         </div>
                     </div>
                 </div>
