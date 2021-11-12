@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
@@ -39,6 +40,7 @@ namespace EVE.Controllers
         private readonly EVEContext _context;
 
         private readonly ILogger<HomeController> _logger;
+        static readonly string trainByCityPath = Path.Combine(Environment.CurrentDirectory, "Views","Home", "Graph.csv");
 
         public HomeController(ILogger<HomeController> logger, EVEContext context)
         {
@@ -89,7 +91,7 @@ namespace EVE.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Graphs()
         {
 
@@ -103,15 +105,13 @@ namespace EVE.Controllers
                 tempdp.Label = day.Date.ToShortDateString();
                 tempdp.Y = ordercount +i;
                 dataPoints.Add(tempdp);
-                i++;
                 
             }
-            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
-            ViewBag.DataPoints2 = dataPoints;
+            ViewBag.DataPoints2 = dataPoints.ToArray() ;
             return View();
 
         }
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Graph2()
         {
 
@@ -123,12 +123,12 @@ namespace EVE.Controllers
                 double typecount = _context.Product.Where(p => p.ProductType.Name.Equals(type)).Count();
                 DataPoint tempdp = new DataPoint();
                 tempdp.Label = type;
-                tempdp.Y = (typecount / numofproducts)*100 ;
+                tempdp.Y = ((int)((typecount / numofproducts)*100)) ;
                 dataPoints.Add(tempdp);
 
 
             }
-            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            ViewBag.DataPoints2 = dataPoints.ToArray();
             return View();
 
         }

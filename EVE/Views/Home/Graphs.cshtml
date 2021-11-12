@@ -2,39 +2,63 @@
 @{
     ViewData["Title"] = "Graph";
 }
-<head>
-    <script>
-window.onload = function () {
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<h1>7 days of sales</h1>
+<div id="my_dataviz"></div>
 
-	var stores =@Html.Raw(JsonConvert.SerializeObject(ViewBag.DataPoints2));
+<script>// set the dimensions and margins of the graph
+    var margin = { top: 30, right: 30, bottom: 70, left: 60 },
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light1",
-	title: {
-		text: "7 days of sales"
-	},
-	axisY: {
-		scaleBreaks: {
-			autoCalculate: false,
-			type: "wavy",
-			lineColor: "black"
-		},
-		gridThickness: 0,
-		suffix: ""
-	},
-	data: [{
-		type: "column",
-		indexLabel: "{y}",
-		dataPoints:  @Html.Raw(ViewBag.DataPoints)
-	}]
-});
-chart.render();
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
 
-}
+    // Parse the Data
+
+        var data = @Html.Raw(JsonConvert.SerializeObject(ViewBag.DataPoints2))
+        
+        // sort data
+
+            data.sort(function (b, a) {
+                return a.y - b.y;
+        });
+
+        // X axis
+        var x = d3.scaleBand()
+            .range([0, width])
+            .domain(data.map(function (d) { return d.label; }))
+            .padding(0.2);
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x))
+            .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end");
+
+        // Add Y axis
+    var y = d3.scaleLinear()
+        .domain([0, data.length+4])
+            .range([height, 0]);
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+        // Bars
+        svg.selectAll("mybar")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", function (d) { return x(d.label); })
+            .attr("y", function (d) { return y(d.y); })
+            .attr("width", x.bandwidth())
+            .attr("height", function (d) { return height - y(d.y); })
+            .attr("fill", "#69b3a2")
+
     </script>
-</head>
-<body>
-    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-</body>
