@@ -53,6 +53,35 @@ namespace EVE.Controllers
         }
 
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Developers()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult Shipping()
+        {
+            return View();
+        }
+
+        public IActionResult WebsiteTerms()
+        {
+            return View();
+        }
+
+        public IActionResult Carees()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

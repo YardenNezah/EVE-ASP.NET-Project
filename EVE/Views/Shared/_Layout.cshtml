@@ -15,6 +15,13 @@
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+                <div href="mobile-menu">
+                    <button class="main-menu"><i class="bi bi-list"></i>Menu</button>
+                    <ul>
+                        <a class="mobile-menu-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a> 
+                        <a class="mobile-menu-link" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                    </ul>
+                </div>
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EVE</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -75,26 +82,26 @@
         <div class="footerList" id="aboutUs">
             <h3>About Us</h3>
             <a class="about"  asp-area="" asp-controller="Home" asp-action="About">About</a>  <br>
-            <a asp-area="" asp-controller="Home" asp-action="Developers" class="developers">Developers</a> <br>
-            <a href="~/../Controllers/MembersController.cs" class="careers">Careers</a>
+            <a class="developers" asp-area="" asp-controller="Home" asp-action="Developers">Developers</a> <br>
+            <a class="careers" asp-area="" asp-controller="Home" asp-action="Carees">Careers</a>
         </div>
         <div class="footerList" id="termsOfUse">
             <h3>Terms Of Use</h3>
-            <a href="#" class="websiteTerms">Website Terms</a> <br>
-            <a href="#" class="shippingTerms">Shipping Terms</a> <br>
+            <a class="websiteTerms" asp-area="" asp-controller="Home" asp-action="WebsiteTerms">Website Terms</a> <br>
+            <a class="shippingTerms" asp-area="" asp-controller="Home" asp-action="Shipping">Shipping Terms</a> <br>
             <a class="privacyPolicy" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
         </div>
         <div class="footerList" id="contactUs">
             <h3>Contact Us</h3>
-            <a href="#" class="adress">Address</a> <br>
-            <a href="#" class="phones">Phones</a> <br>
-            <a href="#" class="email">Email</a> <br>
-            <a href="#" class="message">Leave a message</a>
+            <a class="adress" asp-area="" asp-controller="Home" asp-action="Contact">Address</a> <br>
+            <a class="phones" asp-area="" asp-controller="Home" asp-action="Contact">Phones</a> <br>
+            <a class="email" asp-area="" asp-controller="Home" asp-action="Contact">Email</a> <br>
+            <a class="message" asp-area="" asp-controller="Home" asp-action="Contact">Leave a message</a>
         </div>
     </div>
 
 
-    <footer class="border-top footer text-muted" style=" text-align: center; bottom: 0;width: 100%;">
+    <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - EVE - Coded by Yarden, Raz, Itai and Aviv.
         </div>

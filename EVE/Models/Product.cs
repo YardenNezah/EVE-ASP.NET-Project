@@ -21,7 +21,7 @@ namespace EVE.Models
         public int ProductTypeId { get; set; } // forgein key
 
         [Display(Name = "Product Type")]
-        public ProductType ProductType { get; set; } // one to meny
+        public ProductType ProductType { get; set; } // one to many
 
         [MaxLength(1500)]
         public String Description { get; set; }

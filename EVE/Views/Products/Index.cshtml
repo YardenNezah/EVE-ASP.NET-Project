@@ -94,3 +94,37 @@
         }
     }
 </script>-->
+<div class="grid-container">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="card col-3" stylw="width:300px;">
+                <h1 class="card-name">@item.ProductName</h1>
+                <h2 class="product-type">@item.ProductType.Name</h2>
+                <p class="item-description"> @item.Description</p>
+                <p class="item-price"> @item.Price</p>
+                <img src="@item.FrontImage" class="item-img" alt="img" />
+                <img src="@item.ImageSource" class="item-imgsrc" alt="img" />
+            </div>
+        }
+    </div>
+</div>
+
+    @*<script>
+            function searchProduct() {
+                var input = document.getElementById('input').value;
+                console.log(input);
+                console.log(model.ProductName);
+                console.log(model);
+                console.log(ProductName)
+                var item;
+                for (item in Model) {
+                    console.log((modelItem => item.ProductName));
+                    if (input == '') {
+                        alert("You Must Enter An input!");
+                    }
+
+                }
+            }
+        </script>*@
