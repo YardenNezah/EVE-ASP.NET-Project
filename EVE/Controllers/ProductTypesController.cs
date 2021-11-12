@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EVE.Data;
 using EVE.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EVE.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductTypesController : Controller
     {
         private readonly EVEContext _context;

@@ -8,6 +8,7 @@ using EVE.Data;
 using EVE.Models;
 using System.IO;
 using TweetSharp;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EVE.Controllers
 {
@@ -64,6 +65,7 @@ namespace EVE.Controllers
         }
 
         // GET: Products/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["ProductTypeId"] = new SelectList(_context.ProductType, "Id", "Name");
@@ -118,6 +120,7 @@ namespace EVE.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -191,6 +194,7 @@ namespace EVE.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

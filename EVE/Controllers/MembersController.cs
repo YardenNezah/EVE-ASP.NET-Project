@@ -85,13 +85,14 @@ namespace EVE.Controllers
         }
 
         // GET: Members
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Member.ToListAsync());
         }
 
         // GET: Members/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -196,6 +197,7 @@ namespace EVE.Controllers
         }
 
         // GET: Members/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

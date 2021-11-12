@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EVE.Data;
 using EVE.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace EVE.Controllers
 {
+    [Authorize]
     public class FavoritesController : Controller
     {
         private readonly EVEContext _context;

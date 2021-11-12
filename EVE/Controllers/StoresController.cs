@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using System.Net;
 using System.Xml.Linq;
 using System.Web.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EVE.Controllers
 {
@@ -67,6 +68,7 @@ namespace EVE.Controllers
 
         }
         // GET: Stores
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Stores.ToListAsync());
@@ -87,6 +89,7 @@ namespace EVE.Controllers
         }
 
         // GET: Stores/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -105,6 +108,7 @@ namespace EVE.Controllers
         }
 
         // GET: Stores/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -127,6 +131,7 @@ namespace EVE.Controllers
         }
 
         // GET: Stores/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -178,6 +183,7 @@ namespace EVE.Controllers
         }
 
         // GET: Stores/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
