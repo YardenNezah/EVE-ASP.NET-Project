@@ -5,7 +5,7 @@
 <div class="grid-container">
 
 
-    <h1>Products:</h1>
+    <h1>Products</h1>
     <form>
         <input type="text" placeholder="Search A Product" id="input" />
         <i class="bi bi-search" onclick="searchProduct()"></i>
@@ -13,6 +13,7 @@
     <p>
         <a asp-action="Create">Create New</a>
     </p>
+
 
     <div class="row">
 
@@ -45,23 +46,23 @@
     </div>
 </div>
 
-    @*<script>
-            function searchProduct() {
-                var input = document.getElementById('input').value;
-                console.log(input);
-                console.log(model.ProductName);
-                console.log(model);
-                console.log(ProductName)
-                var item;
-                for (item in Model) {
-                    console.log((modelItem => item.ProductName));
-                    if (input == '') {
-                        alert("You Must Enter An input!");
-                    }
-
+@*<script>
+        function searchProduct() {
+            var input = document.getElementById('input').value;
+            console.log(input);
+            console.log(model.ProductName);
+            console.log(model);
+            console.log(ProductName)
+            var item;
+            for (item in Model) {
+                console.log((modelItem => item.ProductName));
+                if (input == '') {
+                    alert("You Must Enter An input!");
                 }
+
             }
-        </script>*@
+        }
+    </script>*@
 <script>
     function ShowSecondImg() {
         if (item.Image2 != null) {
@@ -74,3 +75,4 @@
     }
 
 </script>
+

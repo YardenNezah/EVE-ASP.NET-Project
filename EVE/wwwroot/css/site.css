@@ -1,11 +1,15 @@
-﻿
-:root {
+﻿:root {
     --background-color: #f2efe8;
     --beige-color: #c2b38a;
     --light-color: #e5e5e5;
     --nav-hover-color: #f3eceb;
     --dark-brown-color: #81734c;
     --cream-color: #dad1d0;
+}
+
+@font-face {
+    font-family: mystoryFont;
+    src: url(sansation_light.woff);
 }
 
 html {
@@ -70,9 +74,9 @@ a {
     }
 
 
-    .shopping-btn, .members-btn, .leftnav {
-        display: flex;
-    }
+.shopping-btn, .members-btn, .leftnav {
+    display: flex;
+}
 
 .user-btn {
     border: 0.3px solid black;
@@ -84,6 +88,7 @@ input {
     font-size: 16px;
     width: 300px;
 }
+
 
 .bttn {
     letter-spacing: 2px;
@@ -164,7 +169,6 @@ input {
 .footer-content {
     position: relative;
     margin-top: 15px;
-    margin-left: 30%;
 }
 
 .submit-btn {
@@ -190,9 +194,9 @@ input {
     margin-top: 60%;
 }
 
-.bi-chevron:hover {
-    color: brown;
-}
+    .bi-chevron:hover {
+        color: brown;
+    }
 
 .row {
     display: flex;
@@ -214,7 +218,7 @@ input {
 }
 
 .item-price {
-   margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .grid-container {
@@ -222,39 +226,49 @@ input {
 }
 
 
-/*Media queries for responsive design:*/
+/Media queries for responsive design:/
 @media (max-width: 992px) {
-    .user-btn {
-        border: 0.3px solid black;
-        border-radius: 30px;
-        margin: 0 3px;
-        font-size: 13px;
-        height: 30px;
+    .user-btn
+
+{
+    border: 0.3px solid black;
+    border-radius: 30px;
+    margin: 0 3px;
+    font-size: 13px;
+    height: 30px;
+}
+
+input {
+    width: 200px;
+}
+
+    input::-webkit-input-placeholder {
+        font-size: 11px;
     }
-    input {
-        width: 200px;
-    }
-        input::-webkit-input-placeholder {
-            font-size: 11px;
-        }
-    .container {
-        font-size: 14px;
-    }
-    .best-sellers-video {
-        width: 500px;
-    }
+
+.container {
+    font-size: 14px;
+}
+
+.best-sellers-video {
+    width: 500px;
+}
+
 }
 
 @media (max-width: 795px) {
     input {
         width: 150px;
     }
-        input::-webkit-input-placeholder { 
-           font-size: 9px;
+
+        input::-webkit-input-placeholder {
+            font-size: 9px;
         }
+
     .container, .bottom {
         font-size: 12px;
     }
+
     .user-btn {
         width: 50px;
         height: 50px;
@@ -262,35 +276,47 @@ input {
         padding-right: 5px;
         text-align: center;
     }
+
     .navbar-brand {
-        margin-left:5px;
+        margin-left: 5px;
     }
+
     .eve-header {
         font-size: 55px;
     }
+
     .eve-secondary-header {
         font-size: 20px;
     }
+
     .best-sellers-video {
         width: 400px;
     }
+
     .mobile-menu {
         display: flex;
     }
-
 }
 
 
 
-    @media (max-width: 768px) {
-        html {
-            font-size: 14px;
-        }
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
     }
+}
+
+.story-content {
+    font-family: mystoryFont;
+    width: 1000px;
+    text-align: left;
+    line-height: 1.5;
+    margin-top: 10%;
+}
 
 
 
-    /*
+/*
 .eve {
     animation: text-shadow 1.5s ease-in-out infinite;
 }

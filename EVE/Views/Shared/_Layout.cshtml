@@ -19,7 +19,7 @@
                     <button class="main-menu"><i class="bi bi-list"></i>Menu</button>
                     <ul>
                         <a class="mobile-menu-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a> 
-                        <a class="mobile-menu-link" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                        <a class="mobile-menu-link" asp-area="" asp-controller="ProductTypes" asp-action="Index">ProductTypes</a>
                     </ul>
                 </div>
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EVE</a>
@@ -91,7 +91,6 @@
             <h3>About Us</h3>
             <a class="about"  asp-area="" asp-controller="Home" asp-action="About">About</a>  <br>
             <a class="developers" asp-area="" asp-controller="Home" asp-action="Developers">Developers</a> <br>
-            <a class="careers" asp-area="" asp-controller="ProductTypes" asp-action="Index">Careers</a>
         </div>
         <div class="footerList" id="termsOfUse">
             <h3>Terms Of Use</h3>
@@ -101,10 +100,14 @@
         </div>
         <div class="footerList" id="contactUs">
             <h3>Contact Us</h3>
-            <a class="adress" asp-area="" asp-controller="Home" asp-action="Contact">Address</a> <br>
-            <a class="phones" asp-area="" asp-controller="Home" asp-action="Contact">Phones</a> <br>
-            <a class="email" asp-area="" asp-controller="Home" asp-action="Contact">Email</a> <br>
-            <a class="message" asp-area="" asp-controller="Home" asp-action="Contact">Leave a message</a>
+            <div>
+                <p>Email: EVE@gmail.com</p>
+                <p>Call us: 03-963-4000</p>
+                <p>Address: Elie Wiesel 2 (The College Of Management)</p>
+            </div>
+            <a class="message" asp-area="" asp-controller="Home" asp-action="Contact">Leave a Message</a>
+            <br />
+            <a class="ourbrunches " asp-area="" asp-controller="Stores" asp-action="Stores">Our Brunches</a>
         </div>
     </div>
 

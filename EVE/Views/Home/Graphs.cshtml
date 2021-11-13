@@ -4,6 +4,7 @@
 }
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
+<div class="graphs-body">
 <h1>7 days of sales</h1>
 <div id="my_dataviz"></div>
 
@@ -60,5 +61,6 @@
             .attr("width", x.bandwidth())
             .attr("height", function (d) { return height - y(d.y); })
             .attr("fill", "#69b3a2")
-
+    
     </script>
+</div>

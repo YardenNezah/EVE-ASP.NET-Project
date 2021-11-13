@@ -1,7 +1,10 @@
 @model IEnumerable<EVE.Controllers.Stores>
 @using Newtonsoft.Json
 
+
 @{ ViewData["Title"] = "Stores"; }
+
+<h1>Our Brunches</h1>
 <style type="text/css">
     /* map needs width and height to appear */
     #map {
@@ -10,6 +13,50 @@
         height: 500px;
     }
 </style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.countrey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.houseNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.countrey)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.city)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.street)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.houseNumber)
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
 <div id="map"></div>
 <div id="info_div"></div>
 <script>
