@@ -1,33 +1,26 @@
-﻿@{
+﻿@using System.Web.WebPages;
+@using System.Net.Mail;
+@using System.Net;
+@{
     ViewData["Title"] = "Leave a Message";
 }
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>function sendForm(form) {
+        alert('sent form: ' + $(form).serialize()).name;
+        return false;
+    }</script>
 
 <div class="footer-content">
     <h1>@ViewData["Title"]</h1>
-
-    @*@foreach (var item in Models.Stores)
-    {
-<p>
-    @Html.DisplayFor(modelItem => item.countrey) ,
-    @Html.DisplayFor(modelItem => item.city) ,
-    @Html.DisplayFor(modelItem => item.street) ,
-    @Html.DisplayFor(modelItem => item.houseNumber)
-</p>
-                <a asp-action="Stores" asp-route-id="@item.Stores">Show in Map</a>
-
-    }*@
-
-
-    <form>
+    <form asp-action="Contact">
         <label for="name">Name:</label> <br />
-        <input type="text" name="name" /> <br />
-        <label for="phone">Phone:</label> <br />
-        <input type="text" name="phone" /> <br />
-        <label for="topic">Topic:</label><br />
-        <input type="text" name="topic" /> <br />
+        <input type="text" name="name" id="name" /> <br />
+        <label for="name">Email:</label> <br />
+        <input type="text" name="from" /> <br />
+        <label for="topic">Subject::</label><br />
+        <input type="text" name="subject" /> <br />
         <label for="message">Message:</label> <br />
-        <textarea name="message" rows="4" cols="40"> </textarea>  <br />
+        <textarea name="body" rows="4" cols="40"> </textarea>  <br />
         <input type="submit" value="Submit" class="submit-btn" /> <br />
     </form>
 
