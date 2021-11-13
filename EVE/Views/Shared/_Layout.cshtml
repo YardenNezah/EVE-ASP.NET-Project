@@ -49,24 +49,25 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Favorites" asp-action="Index"><i class="bi bi-heart"></i></a>
                         </div>
                         <div class="members-btn">
-
-                            <div class="nav-item user-btn">
-							@if (!User.Identity.IsAuthenticated)
+                            @if (!User.Identity.IsAuthenticated)
                             {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Register">Sign Up </a>
-                            </div>
+                                <div class="nav-item user-btn">
 
-                            <div class="nav-item user-btn">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Login">Login</a>
-                            </div>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Register">Sign Up </a>
+                                </div>
+
+                                <div class="nav-item user-btn">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Login">Login</a>
+                                </div>
                             }
-                            else{
-                            <div class="nav-item">
-                            
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Logout">Logout</a>
-                            </div>
+                            else
+                            {
+
+                                <div class="nav-item user-btn">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Logout">Logout</a>
+                                </div>
                             }
-                        </div>
+                            </div>
                     </div>
                 </div>
                 </div>
