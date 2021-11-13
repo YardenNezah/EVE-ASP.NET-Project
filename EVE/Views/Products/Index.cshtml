@@ -2,36 +2,45 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-<h1>Products:</h1>
-<form>
-    <input type="text" placeholder="Search A Product" id="input" />
-    <i class="bi bi-search" onclick="searchProduct()"></i>
-</form>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
 <div class="grid-container">
+
+
+    <h1>Products:</h1>
+    <form>
+        <input type="text" placeholder="Search A Product" id="input" />
+        <i class="bi bi-search" onclick="searchProduct()"></i>
+    </form>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
     <div class="row">
 
         @foreach (var item in Model)
         {
-        <div class="card col-3" stylw="width:300px;">
-            <h1 class="card-name">@item.ProductName</h1>
-            <h2 class="product-type">@item.ProductType.Name</h2>
-            <p class="item-description"> @item.Description</p>
-            <p class="item-price"> @item.Price</p>
-            @if (item.Image1 != null)
-            {
-                string img1 = Convert.ToBase64String(item.Image1);
-                <img src="data:image/png;base64,@img1" width="60" height="60" />}
-            @if (item.Image2 != null)
-            {
-                string img2 = Convert.ToBase64String(item.Image2);
-                <img src="data:image/png;base64,@img2" width="60" height="60" />
+            <div class="card col-3 product-item">
+                <div class="item-header">
+                    <h1 class="card-name">@item.ProductName</h1>
+                    <p class="item-description"> @item.Description</p>
+                    @if (item.Image1 != null)
+                    {
+                        string img1 = Convert.ToBase64String(item.Image1);
+                        <div class="move-img">
+                            <i class="bi bi-chevron bi-chevron-compact-left" onclick="ShowSecondImg()"></i>
+                            <img src="data:image/png;base64,@img1" width="240" height="350" class="item-main-img" />
+                            <i class="bi bi-chevron bi-chevron-compact-right" onclick="ShowMainImg()"></i>
+                        </div>
+                    }
+                    @if (item.Image2 != null)
+                    {
+                        string img2 = Convert.ToBase64String(item.Image2);
+                        <img src="data:image/png;base64,@img2" width="250" height="350" class="item-second-img" />
 
-            }
-        </div>
+                    }
+                    <p class="item-price"><strong>Price:</strong> @item.Price</p>
+                </div>
+
+            </div>
         }
     </div>
 </div>
@@ -53,3 +62,15 @@
                 }
             }
         </script>*@
+<script>
+    function ShowSecondImg() {
+        if (item.Image2 != null) {
+            document.getElementsByClassName('item-second-img').style.display = "grid";
+        }
+    }
+    function ShowMainImg() {
+        document.getElementsByClassName('item-main-img').style.display = "grid";
+
+    }
+
+</script>

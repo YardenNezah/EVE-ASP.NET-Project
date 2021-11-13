@@ -177,18 +177,48 @@ input {
 }
 
     .submit-btn:hover {
-        background-color: var(--cream-color);
+        background-color: white;
         color: var(--dark-brown-color);
     }
 
+.move-img {
+    display: flex;
+}
 
-.grid-container {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
+.bi-chevron {
+    margin-top: 60%;
+}
+
+.bi-chevron:hover {
+    color: brown;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
 }
 
 
+.item-second-img {
+    display: none;
+}
 
+.product-item {
+    height: 480px;
+    width: 400px;
+    margin: 30px 10px;
+    border: 2px solid var(--dark-brown-color);
+    border-radius: 10px;
+}
+
+.item-price {
+   margin-bottom: 5px;
+}
+
+.grid-container {
+    text-align: center;
+}
 
 
 /*Media queries for responsive design:*/
