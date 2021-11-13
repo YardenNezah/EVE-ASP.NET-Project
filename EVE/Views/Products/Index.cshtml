@@ -73,10 +73,11 @@
     <script id="resultsProdcuts" type="text/html">
             <div class="card col-3 product-item">
                 <div class="item-header">
-                    <h1 class="card-name">${name}</h1>
+                    <h1 class="card-name"><a href="/Products/Details/${id}">${name}</a></h1>
                     <p class="item-description"> ${desciption}</p>
                     <div class="move-img">
-                        <img src="data:image/png;base64,${image1}" width="240" height="350" class="item-main-img" />
+                        <a href="/Products/Details/${id}"></a>
+                            <img src="data:image/png;base64,${image1}" width="240" height="350" class="item-main-img" />
                     </div>
                     <p class="item-price"><strong>Price:</strong> ${price}</p>
                 </div>
