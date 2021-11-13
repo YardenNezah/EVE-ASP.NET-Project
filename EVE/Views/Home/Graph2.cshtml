@@ -28,8 +28,9 @@
     var data = new Object();
     var char = "a";
     for (var i = 0; i < data1.length; i++) {
-        data[data1[i].label] = data1[i].y;
-
+        if (data1[i].y != 0) {
+            data[data1[i].label] = data1[i].y;
+        }
     }
 
 // set the color scale
