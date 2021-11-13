@@ -7,7 +7,19 @@
     <h1>@ViewData["Title"]</h1>
 
     <h2>Address:</h2>
-    Elie Wiesel 2 (The College Of Management Academic Studies).
+    Elie Wiesel 2 (The College Of Management).
+
+    @*@foreach (var item in Models.Stores)
+    {
+<p>
+    @Html.DisplayFor(modelItem => item.countrey) ,
+    @Html.DisplayFor(modelItem => item.city) ,
+    @Html.DisplayFor(modelItem => item.street) ,
+    @Html.DisplayFor(modelItem => item.houseNumber)
+</p>
+                <a asp-action="Stores" asp-route-id="@item.Stores">Show in Map</a>
+
+    }*@
 
     <h2>Phones:</h2>
     +972523383837
@@ -18,13 +30,13 @@
     <h2>Leave a message:</h2>
     <form>
         <label for="name">Name:</label>
-        <input type="text" name="name" />
+        <input type="text" name="name" /> <br />
         <label for="phone">Phone:</label>
-        <input type="text" name="phone" />
+        <input type="text" name="phone" /> <br />
         <label for="topic">Topic:</label>
-        <input type="text" name="topic" />
+        <input type="text" name="topic" /> <br />
         <label for="message">Message:</label>
-        <textarea placeholder="Leave a message here" rows="5" cols="50" />
+        <textarea name="message" rows="4" cols="40"> </textarea>  <br />
         <input type="submit" value="Submit" class="submit-btn" />
     </form>
 

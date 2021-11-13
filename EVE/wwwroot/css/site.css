@@ -164,6 +164,7 @@ input {
 .footer-content {
     position: relative;
     margin-top: 15px;
+    margin-left: 30%;
 }
 
 .submit-btn {
