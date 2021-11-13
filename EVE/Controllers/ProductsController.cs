@@ -9,6 +9,7 @@ using EVE.Models;
 using System.IO;
 using TweetSharp;
 using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace EVE.Controllers
 {
@@ -35,6 +36,8 @@ namespace EVE.Controllers
         public async Task<IActionResult> Index()
         {
             var eVEContext = _context.Product.Include(p => p.ProductType);
+            SelectList l= new SelectList(await _context.ProductType.Where(n => n.Name != "Not Found").ToListAsync(), "Name", "Name");
+            ViewBag.Types = l;
             return View(await eVEContext.ToListAsync());
         }
 
@@ -228,5 +231,50 @@ namespace EVE.Controllers
         {
             return _context.Product.Any(e => e.ProductID == id);
         }
-    }
+        public async Task<IActionResult> getProducts(int modeId, string categoryId, string sort)
+        {
+            var products = await _context.Product.Include(i => i.ProductType).ToListAsync();
+            modeId = 0;
+            //FILTERS
+            ////////////////////////////////////////////////////////////////////
+            if (categoryId!="" && categoryId!="0")
+                products.RemoveAll(c => c.ProductType.Name != categoryId);
+
+
+            //by default the list ordered by newest
+            if (sort == "low2high")
+                products.Sort((a, b) => a.Price.CompareTo(b.Price));
+
+            if (sort == "high2low")
+            {
+                products.Sort((a, b) => a.Price.CompareTo(b.Price));
+                products.Reverse();
+            }
+
+            if (sort == "alphabetical")
+                products.Sort((a, b) => a.ProductName.CompareTo(b.ProductName));
+
+
+            if (sort == "newest" || sort == null)
+                products.Sort((a, b) => b.ProductID.CompareTo(a.ProductID));
+            
+            if (modeId == 0&&products.Count !=0)
+            {
+                var query =
+                    from product in products
+                    select new
+                    {
+                        id = product.ProductID,
+                        image1 = Convert.ToBase64String(product.Image1),
+                        image2 = product.Image2,
+                        name = product.ProductName,
+                        price = product.Price,
+                        desciption = product.Description,
+
+                    };
+                return Json(query);
+            }
+            return Json("");
+        }
+        }
 }

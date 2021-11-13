@@ -2,77 +2,85 @@
 
 @{ ViewData["Title"] = "Index"; }
 
-<div class="grid-container">
 
-
-    <h1>Products</h1>
-    <form>
-        <input type="text" placeholder="Search A Product" id="input" />
-        <i class="bi bi-search" onclick="searchProduct()"></i>
-    </form>
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
-
-
-    <div class="row">
-
-        @foreach (var item in Model)
-        {
-            <div class="card col-3 product-item">
-                <div class="item-header">
-                    <h1 class="card-name">@item.ProductName</h1>
-                    <p class="item-description"> @item.Description</p>
-                    @if (item.Image1 != null)
-                    {
-                        string img1 = Convert.ToBase64String(item.Image1);
-                        <div class="move-img">
-                            <i class="bi bi-chevron bi-chevron-compact-left" onclick="ShowSecondImg()"></i>
-                            <img src="data:image/png;base64,@img1" width="240" height="350" class="item-main-img" />
-                            <i class="bi bi-chevron bi-chevron-compact-right" onclick="ShowMainImg()"></i>
-                        </div>
-                    }
-                    @if (item.Image2 != null)
-                    {
-                        string img2 = Convert.ToBase64String(item.Image2);
-                        <img src="data:image/png;base64,@img2" width="250" height="350" class="item-second-img" />
-
-                    }
-                    <p class="item-price"><strong>Price:</strong> @item.Price</p>
+<!-- slider Area Start-->
+<div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center" data-background="assets/img/hero/back8.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Products</h2>
+                    </div>
                 </div>
-
             </div>
-        }
+        </div>
     </div>
 </div>
+<!-- slider Area End-->
+<!-- Latest Products Start -->
+<section class="latest-product-area latest-padding">
+    <div class="container">
+        <div class="row product-btn d-flex justify-content-between">
+            <div class="properties__button">
+                <!--Nav Brands Button  -->
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <select id="CategoryId" class="select" asp-items="@ViewBag.Types">
+                            <option value="0" selected>All Categories</option>
+                        </select>
+                    </div>
+                </nav>
+                <!--End Nav Button  -->
+            </div>
+            <div class="select-this d-flex">
+                <select id="Sort" class="select">
+                    <option value="null" disabled selected>Sort</option>
+                    <option value="newest">What's new</option>
+                    <option value="alphabetical">Alphabetical</option>
+                    <option value="low2high">Price low to high</option>
+                    <option value="high2low">Price high to low</option>
 
-@*<script>
-        function searchProduct() {
-            var input = document.getElementById('input').value;
-            console.log(input);
-            console.log(model.ProductName);
-            console.log(model);
-            console.log(ProductName)
-            var item;
-            for (item in Model) {
-                console.log((modelItem => item.ProductName));
-                if (input == '') {
-                    alert("You Must Enter An input!");
-                }
+                </select>
+            </div>
+        </div>
+        <!-- Nav Card -->
+        <div class="tab-content" id="nav-tabContent">
+            <!-- card one -->
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="row" id="productInsertion">
 
-            }
-        }
-    </script>*@
-<script>
-    function ShowSecondImg() {
-        if (item.Image2 != null) {
-            document.getElementsByClassName('item-second-img').style.display = "grid";
-        }
-    }
-    function ShowMainImg() {
-        document.getElementsByClassName('item-main-img').style.display = "grid";
+                    <!-- JS Insert Products HERE! -->
 
-    }
+                </div>
+            </div>
+        </div>
+        <!-- End Nav Card -->
+    </div>
+</section>
 
-</script>
+@section Scripts
+ {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 
+
+
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="~/js/ProductIndex.js"></script>
+    <!--================HERE THE JS Products RESULT THAT WILL INSERT IN <div class="comment-list">!=================-->
+    <script id="resultsProdcuts" type="text/html">
+            <div class="card col-3 product-item">
+                <div class="item-header">
+                    <h1 class="card-name">${name}</h1>
+                    <p class="item-description"> ${desciption}</p>
+                    <div class="move-img">
+                        <img src="data:image/png;base64,${image1}" width="240" height="350" class="item-main-img" />
+                    </div>
+                    <p class="item-price"><strong>Price:</strong> ${price}</p>
+                </div>
+            </div>    </script>
+
+}
+<!-- Latest Products End -->
